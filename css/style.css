@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+}
+
+#swal2-title {
+    font-size: 2.4rem;
+    color: #e6e3db;
+}
+#swal2-html-container {
+    font-size: 2rem;
+    color: #e6e3db;
+}
+.swal2-actions {
+    font-size: 1.7rem;
+}
+
+body {
+    background-color: #B865B8;
+}
+h1, h2 {
+    font-family: "Lato", sans-serif;
+    color: #e6e3db;
+    margin-top: 2rem;
+}
+h1 {
+    font-size: 3.2rem;
+    text-align: center;
+}
+h2 {
+    font-size: 2.8rem;
+    padding-bottom: 2rem;
+}
+
+.secciones-meditaciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.meditacion {
+    text-align: center;
+    padding: 0 .5rem;
+}
+
+.meditacion-elegida {
+    margin: 2rem 3rem;
+}
+
+.boton-start, .boton-pause, .boton-playlist {
+    font-family: "Lato", sans-serif;
+    font-size: 1.6rem;
+    background-color: #e6e3db;
+    color: #B865B8;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5%;
+    height: 35px;
+}
+.boton-start, .boton-pause {
+    margin: 1rem 30rem;
+    text-align: center;
+}
+.boton-start:enabled, .boton-pause:active {
+    background-color: #672b67;
+    color: #e6e3db;
+}
+
+.container-timer {
+    margin: 4rem 7rem;
+    -webkit-box-shadow: 10px 10px 41px 4px rgba(103,43,103,0.59);
+    -moz-box-shadow: 10px 10px 41px 4px rgba(103,43,103,0.59);
+    box-shadow: 10px 10px 41px 4px rgba(103,43,103,0.59);
+}
+.container-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+#timer {
+    font-family: "Lato", sans-serif;
+    font-size: 3rem;
+    color: #e6e3db;
+    text-align: center;
+    padding-top: 2rem;
+}
