@@ -122,14 +122,13 @@ const crearOpcionesMeditaciones = () => {
                             `
         const boton = opcion.querySelector('button');
         boton.classList = 'boton-playlist';
-        boton.addEventListener('click', () => crearMeditacion(meditacion));
-
+        boton.addEventListener('click', () => crearMeditacion(meditacion)); // Se le agrega funcionalidad al botón haciendo callback a la función que crea la meditación elegida
+        // Se agregan los divs de opción al div de secciones meditaciones
         seccionesMeditaciones.appendChild(opcion)
     })
 }
 
-
-// Crear divs para cada meditación
+// Crear divs de la meditación elegida
 const crearMeditacion = (meditacion) => {
         meditacionElegida.style.display = 'block';
 
@@ -148,21 +147,25 @@ const crearMeditacion = (meditacion) => {
         iframe.allow = meditacion.iframe.allow;
         iframe.loading = meditacion.iframe.loading;
         iframe.classList = 'iframe';
-        
+        // Se agregan al div de sección el titulo y el iframe
         seccion.appendChild(title)
         seccion.appendChild(iframe)
-
+        // Se agrega el div de sección al div de meditación elegida
         meditacionElegida.appendChild(seccion)
         seccionesMeditaciones.style.display = 'none'
+        //  Se llama a la función accediendo al src del iframe elegido, como párámetro, para checkear si se esconde el container de timer o no
+        esconderTimer(iframe.src)
 }
 
-const esconderTimer = () => {
-    const iframe = meditacionElegida.querySelector('iframe');
-    if (iframe && iframe.src === 'https://www.youtube.com/embed/VFXI9HPWQvk?si=JuYVR6Xk6JLINLSE') {
-        timerMeditacion.style.display = 'none';
+// Traer del DOM container del timer para mostrarlo o esconderlo según se elige playlist o video
+const esconderTimer = (src) => {
+    const containerTimer = document.querySelector('.container-timer');
+    if (src === 'https://www.youtube.com/embed/VFXI9HPWQvk?si=JuYVR6Xk6JLINLSE') {
+        containerTimer.style.display = 'none';
+    }else{
+        containerTimer.style.display = 'block';
     }
 }
-
 
 // Creación del temporizador
 const crearTimer = () => {
@@ -215,13 +218,10 @@ const stopTimer = () => {
     }
 }
 
-startButton.addEventListener('click', startTimer);
-pauseButton.addEventListener('click', pauseTimer);
-
-
-if(seccionesMeditaciones) {
+// Inicialización
+if(document.querySelector('.secciones-meditaciones')) {
     darBienvenida()
     crearOpcionesMeditaciones()
-} else{
-    esconderTimer()
+    startButton.addEventListener('click', startTimer);
+    pauseButton.addEventListener('click', pauseTimer);
 }
