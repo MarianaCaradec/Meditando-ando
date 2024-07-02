@@ -14,7 +14,6 @@ const darBienvenida = () => {
         allowEnterKey: true,
     });
 };
-darBienvenida();
 
 // Manejo del DOM
 let seccionesMeditaciones = document.querySelector('.secciones-meditaciones');
@@ -30,11 +29,6 @@ let minutes = 0;
 let seconds = 0;
 
 
-// } else if(meditacionElegida){
-
-
-
-
 // Crear div de cada meditación
 const meditaciones = [
     {
@@ -48,7 +42,7 @@ const meditaciones = [
             allow: 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture',
             loading: 'lazy'
         },
-        boton: 'Utilizar esta playlist',
+        boton: 'Utilizar esta playlist'
     },
     {
         titulo: 'Meditación guiada',
@@ -61,7 +55,7 @@ const meditaciones = [
             allow: 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture',
             loading: 'lazy'
         },
-        boton: 'Utilizar esta playlist',
+        boton: 'Utilizar esta playlist'
     },
     {
         titulo: 'Cuencos tibetanos',
@@ -74,7 +68,7 @@ const meditaciones = [
             allow: 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture',
             loading: 'lazy'
         },
-        boton: 'Utilizar esta playlist',
+        boton: 'Utilizar esta playlist'
     },
     {
         titulo: 'Meditación cimática con mantras',
@@ -87,7 +81,7 @@ const meditaciones = [
             allow: 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture',
             loading: 'lazy'
         },
-        boton: 'Utilizar esta playlist',
+        boton: 'Utilizar esta playlist'
     },
     {
         titulo: 'Meditación de los 7 chakras con mantras',
@@ -100,7 +94,19 @@ const meditaciones = [
             allow: 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture',
             loading: 'lazy'
         },
-        boton: 'Utilizar esta playlist',
+        boton: 'Utilizar esta playlist'
+    },
+    {
+        titulo: 'Meditación (30 minutos) para sanar',
+        iframe: {
+            src: 'https://www.youtube.com/embed/VFXI9HPWQvk?si=JuYVR6Xk6JLINLSE',
+            width: '560',
+            height: '315',
+            frameBorder: '0',
+            allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen; picture-in-picture; web-share',
+            referrerPolicy: 'strict-origin-when-cross-origin'
+        },
+        boton: 'Mirar este video'
     }
 ]
 
@@ -111,7 +117,7 @@ const crearOpcionesMeditaciones = () => {
         const opcion = document.createElement('div');
         opcion.classList = 'meditacion';
         opcion.innerHTML = `
-                            <h2>${meditacion.titulo}</h2>
+                            <h3>${meditacion.titulo}</h3>
                             <button>${meditacion.boton}</button>
                             `
         const boton = opcion.querySelector('button');
@@ -121,7 +127,7 @@ const crearOpcionesMeditaciones = () => {
         seccionesMeditaciones.appendChild(opcion)
     })
 }
-crearOpcionesMeditaciones()
+
 
 // Crear divs para cada meditación
 const crearMeditacion = (meditacion) => {
@@ -130,8 +136,9 @@ const crearMeditacion = (meditacion) => {
         const seccion = document.createElement('div');
         seccion.classList = 'meditacion-elegida';
 
-        const title = document.createElement('h2');
+        const title = document.createElement('h3');
         title.textContent = meditacion.titulo;
+        title.classList = 'titulo-elegido';
         
         const iframe = document.createElement('iframe');
         iframe.style = meditacion.iframe.style;
@@ -140,12 +147,20 @@ const crearMeditacion = (meditacion) => {
         iframe.height = meditacion.iframe.height;
         iframe.allow = meditacion.iframe.allow;
         iframe.loading = meditacion.iframe.loading;
+        iframe.classList = 'iframe';
         
         seccion.appendChild(title)
         seccion.appendChild(iframe)
 
         meditacionElegida.appendChild(seccion)
         seccionesMeditaciones.style.display = 'none'
+}
+
+const esconderTimer = () => {
+    const iframe = meditacionElegida.querySelector('iframe');
+    if (iframe && iframe.src === 'https://www.youtube.com/embed/VFXI9HPWQvk?si=JuYVR6Xk6JLINLSE') {
+        timerMeditacion.style.display = 'none';
+    }
 }
 
 
@@ -203,3 +218,10 @@ const stopTimer = () => {
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 
+
+if(seccionesMeditaciones) {
+    darBienvenida()
+    crearOpcionesMeditaciones()
+} else{
+    esconderTimer()
+}

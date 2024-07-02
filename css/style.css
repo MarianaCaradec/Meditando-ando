@@ -19,7 +19,7 @@
 body {
     background-color: #B865B8;
 }
-h1, h2 {
+h1, h2, h3 {
     font-family: "Lato", sans-serif;
     color: #e6e3db;
     margin-top: 2rem;
@@ -30,7 +30,11 @@ h1 {
 }
 h2 {
     font-size: 2.8rem;
+    margin-left: 1.5rem;
     padding-bottom: 2rem;
+}
+h3 {
+    font-size: 2.6rem;
 }
 
 .secciones-meditaciones {
@@ -40,11 +44,19 @@ h2 {
 
 .meditacion {
     text-align: center;
-    padding: 0 .5rem;
+    padding: 0 .5rem 4rem .5rem;
 }
 
 .meditacion-elegida {
     margin: 2rem 3rem;
+}
+
+.titulo-elegido {
+    margin-bottom: 2rem;
+}
+
+.iframe {
+    margin-bottom: 2rem;
 }
 
 .boton-start, .boton-pause, .boton-playlist {
@@ -70,7 +82,7 @@ h2 {
 }
 
 .container-timer {
-    margin: 4rem 7rem;
+    margin: 0 7rem;
     -webkit-box-shadow: 10px 10px 41px 4px rgba(103,43,103,0.59);
     -moz-box-shadow: 10px 10px 41px 4px rgba(103,43,103,0.59);
     box-shadow: 10px 10px 41px 4px rgba(103,43,103,0.59);
@@ -84,6 +96,7 @@ h2 {
     font-family: "Lato", sans-serif;
     font-size: 3rem;
     color: #e6e3db;
+    background-color: #672b67;
     text-align: center;
     padding-top: 2rem;
 }
